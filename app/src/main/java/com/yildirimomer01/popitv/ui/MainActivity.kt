@@ -1,8 +1,11 @@
-package com.yildirimomer01.popitv
+package com.yildirimomer01.popitv.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.yildirimomer01.popitv.R
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
