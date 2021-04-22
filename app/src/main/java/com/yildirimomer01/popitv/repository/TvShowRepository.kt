@@ -5,6 +5,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.rxjava3.flowable
 import com.yildirimomer01.popitv.model.TvShow
+import com.yildirimomer01.popitv.model.TvShowDetail
 import com.yildirimomer01.popitv.model.TvShowPagingSource
 import com.yildirimomer01.popitv.network.TvShowService
 import io.reactivex.rxjava3.core.Flowable
@@ -28,8 +29,7 @@ class TvShowRepository @Inject constructor(
             pagingSourceFactory = {tvShowPagingSource}
         ).flowable
     }
-    fun getTvShowDetails(tvId: Long): Single<TvShow> {
-        return tvShowService.getTvShow(tvId)
-            .subscribeOn(Schedulers.io())
+    fun getTvShowDetails(tvId: Long): Single<TvShowDetail> {
+        return tvShowService.getTvShow(tvId).subscribeOn(Schedulers.io())
     }
 }
