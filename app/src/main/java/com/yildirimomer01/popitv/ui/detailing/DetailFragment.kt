@@ -59,9 +59,10 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
                     if (tvShowDetail?.genres != null && tvShowDetail.genres.isNotEmpty()){
                         val genres = tvShowDetail.genres.joinToString (
                             separator = " | ",
-                            transform = {genre ->  genre.toString() }
+                            transform = {genre ->  genre.name!! }
                         )
                         tvGenres.text = genres
+
                     }else{
                         tvGenres.visibility = View.GONE
                     }
