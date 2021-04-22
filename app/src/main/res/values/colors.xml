@@ -10,7 +10,7 @@
     <color name="colorPrimary">#212121</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#03DAC5</color>
-    <color name="colorCardBg">#03DAC5</color>
+    <color name="colorCardBg">#212121</color>
     <color name="colorGrey">#303030</color>
     <color name="colorGrey2">#424242</color>
 </resources>

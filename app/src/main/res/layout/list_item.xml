@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:contentPadding="@dimen/half_top"
+    app:cardBackgroundColor="@color/colorCardBg"
+    app:cardUseCompatPadding="true"
+    >
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <com.yildirimomer01.popitv.util.RatioImageView
+            android:id="@+id/ivPoster"
+            app:ratio="0.69"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            tools:src="@tools:sample/avatars">
+
+        </com.yildirimomer01.popitv.util.RatioImageView>
+        <LinearLayout
+            android:layout_marginStart="@dimen/half_top"
+            android:layout_marginEnd="@dimen/half_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <com.google.android.material.textview.MaterialTextView
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:id="@+id/tVTitle"
+                tools:text="@tools:sample/lorem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:id="@+id/tVReleaseDate"
+                tools:text="@tools:sample/date/ddmmyy"
+                android:layout_marginTop="@dimen/standart_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:maxLines="2"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:id="@+id/tVOverivew"
+                android:ellipsize="end"
+                tools:text="@tools:sample/lorem/random"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
