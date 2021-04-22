@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.yildirimomer01.popitv.R
 import com.yildirimomer01.popitv.module.GlideApp
 import com.yildirimomer01.popitv.model.TvShow
+import kotlinx.android.synthetic.main.fragment_detail.*
 import kotlinx.android.synthetic.main.list_item.view.*
 import timber.log.Timber
 
@@ -42,7 +43,10 @@ class ListItemAdapter : PagingDataAdapter<TvShow, ListItemAdapter.ItemViewHolder
                     .into(ivPoster)
                 tVTitle.text = tvShow.originalName
                 tVReleaseDate.text = tvShow.firstAirDate
-                tVOverivew.text = tvShow.overview
+                tvShow?.voteAverage?.let { rating->
+                    rbRating.rating = (rating/2).toFloat()
+                }
+                tvVoteCount.text = tvShow?.voteCount.toString()
             }
 
         }
