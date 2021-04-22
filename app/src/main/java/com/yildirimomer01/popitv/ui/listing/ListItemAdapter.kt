@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.yildirimomer01.popitv.R
 import com.yildirimomer01.popitv.module.GlideApp
 import com.yildirimomer01.popitv.model.TvShow
-import kotlinx.android.synthetic.main.fragment_detail.*
 import kotlinx.android.synthetic.main.list_item.view.*
 import timber.log.Timber
 
@@ -61,7 +60,6 @@ class ListItemAdapter : PagingDataAdapter<TvShow, ListItemAdapter.ItemViewHolder
         val tvShow =getItem(position)
         tvShow?.let { holder.bind(it) }
     }
-
 
     companion object{
         private val COMPARATOR = object : DiffUtil.ItemCallback<TvShow>(){

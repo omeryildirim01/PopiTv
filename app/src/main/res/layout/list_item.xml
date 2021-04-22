@@ -38,21 +38,45 @@
                 android:layout_height="wrap_content"/>
 
             <com.google.android.material.textview.MaterialTextView
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
                 android:id="@+id/tVReleaseDate"
                 tools:text="@tools:sample/date/ddmmyy"
-                android:layout_marginTop="@dimen/standart_top"
+                android:layout_marginTop="@dimen/quart_top"
+                android:layout_marginBottom="@dimen/quart_top"
+                android:drawableStart="@drawable/ic_baseline_calendar_today_24"
+                android:drawablePadding="@dimen/quart_top"
+                android:gravity="center_vertical"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
-            <com.google.android.material.textview.MaterialTextView
-                android:maxLines="2"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                android:id="@+id/tVOverivew"
-                android:ellipsize="end"
-                tools:text="@tools:sample/lorem/random"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatRatingBar
+                    android:id="@+id/rbRating"
+                    style="?attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:isIndicator="true"
+                    android:rating="3.5" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvVoteCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/standart_top"
+                    android:layout_marginTop="@dimen/quart_top"
+                    android:layout_marginBottom="@dimen/quart_top"
+                    android:drawableEnd="@drawable/ic_baseline_people_24"
+                    android:drawablePadding="@dimen/quart_top"
+                    android:gravity="center_vertical"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                    android:textColor="@android:color/white"
+                    tools:text="150" />
+            </LinearLayout>
 
         </LinearLayout>
 
