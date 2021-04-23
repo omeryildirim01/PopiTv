@@ -1,7 +1,12 @@
 package com.yildirimomer01.popitv.ui.detailing
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import androidx.databinding.BindingAdapter
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
@@ -9,20 +14,34 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.yildirimomer01.popitv.R
+import com.yildirimomer01.popitv.databinding.FragmentDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
 import com.yildirimomer01.popitv.module.GlideApp
 import com.yildirimomer01.popitv.model.Status
+import com.yildirimomer01.popitv.util.RatioImageView
 import kotlinx.android.synthetic.main.fragment_detail.*
 import kotlinx.android.synthetic.main.layout_loading.*
 import timber.log.Timber
 import java.lang.StringBuilder
 
 @AndroidEntryPoint
-class DetailFragment : Fragment(R.layout.fragment_detail) {
+class DetailFragment : Fragment() {
 
     private val viewModel: DetailViewModel by viewModels()
     private lateinit var networkAdapter: NetworkAdapter
     private lateinit var creatorAdapter: CreatorAdapter
+    private lateinit var dataBinding:FragmentDetailBinding
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        dataBinding = FragmentDetailBinding.inflate(layoutInflater)
+    }
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        //dataBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_detail, container, false)
+        return dataBinding.root
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         ibBack.setOnClickListener {
@@ -50,58 +69,12 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
                 Status.SUCCESS ->{
                     showLoading(false)
                     val tvShowDetail = it.data
+                    dataBinding.tv = tvShowDetail
                     Timber.i(tvShowDetail.toString())
-                    GlideApp.with(ivBackdrop)
-                        .load("https://image.tmdb.org/t/p/original${tvShowDetail?.backdropPath}")
-                        .placeholder(R.drawable.ic_image_placeholder)
-                        .error(R.drawable.ic_error_image)
-                        .into(ivBackdrop)
-                    GlideApp.with(ivPoster)
-                        .load("https://image.tmdb.org/t/p/w500${tvShowDetail?.posterPath}")
-                        .placeholder(R.drawable.ic_image_placeholder)
-                        .error(R.drawable.ic_error_image)
-                        .into(ivPoster)
-
-                    tvTitle.text = tvShowDetail?.name
-                    if (tvShowDetail?.genres != null && tvShowDetail.genres.isNotEmpty()){
-                        val genres = tvShowDetail.genres.joinToString (
-                            separator = " | ",
-                            transform = {genre ->  genre.name!! }
-                        )
-                        tvGenres.text = genres
-
-                    }else{
-                        tvGenres.visibility = View.GONE
-                    }
-                    val strBuilder = StringBuilder()
-                    if (tvShowDetail?.firstAirDate != null){
-                       strBuilder.append(tvShowDetail.firstAirDate)
-                    }
-                    if (tvShowDetail?.lastAirDate != null){
-                        strBuilder.append(" / ")
-                        strBuilder.append(tvShowDetail.lastAirDate)
-                    }
-                    if (strBuilder.toString().isNotEmpty() ){
-                        tVAirDate.text = strBuilder.toString()
-                    }
-
-                    if (tvShowDetail?.numberOfEpisodes != null){
-                        tVEpisode.text = tvShowDetail?.numberOfEpisodes.toString()
-                    }else{
-                        tVEpisode.visibility = View.GONE
-                    }
-                    if (tvShowDetail?.numberOfSeasons != null){
-                        tVSeason.text = tvShowDetail?.numberOfSeasons.toString()
-                    }else{
-                        tVSeason.visibility = View.GONE
-                    }
-
-                    tvShowDetail?.voteAverage?.let { rating->
-                        rbRating.rating = (rating/2).toFloat()
-                    }
-                    tvVoteCount.text = tvShowDetail?.voteCount.toString()
-                    tVOverivew.text = tvShowDetail?.overview
-
+                    tvGenres.visibility =  if (tvShowDetail?.genres != null && tvShowDetail.genres.isNotEmpty())  View.VISIBLE else View.GONE
+                    tVEpisode.visibility =  if (tvShowDetail?.numberOfEpisodes != null)  View.VISIBLE else View.GONE
+                    tVSeason.visibility =  if (tvShowDetail?.numberOfSeasons != null) View.VISIBLE else View.GONE
+                    
                     val networks = tvShowDetail?.networks
                     if (networks != null && networks.isNotEmpty()){
                         networkAdapter.submitList(networks)
@@ -115,7 +88,7 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
                     showLoading(false)
                     Timber.i(it.toString())
                     Snackbar.make(requireView(), it.message!!, Snackbar.LENGTH_LONG).show()
-                    onErrorState()
+                    //onErrorState()
                 }
                 Status.LOADING ->{
                     Timber.i("loading .. ")
@@ -130,4 +103,5 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
     private fun onErrorState(){
         this.view?.findNavController()?.popBackStack()
     }
+
 }

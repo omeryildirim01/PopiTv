@@ -93,7 +93,12 @@ data class TvShowDetail(
     val voteAverage: Double?,
     @Json(name = "vote_count")
     val voteCount: Long?,
-)
+    var genreView:String?
+){
+    init {
+        genreView = ""
+    }
+}
 @JsonClass(generateAdapter = true)
 data class Creator(
     val id: Long,

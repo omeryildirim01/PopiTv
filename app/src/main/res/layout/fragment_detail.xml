@@ -1,238 +1,264 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context=".ui.detailing.DetailFragment">
-
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:fitsSystemWindows="true">
-
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fitsSystemWindows="true"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
-
-            <com.yildirimomer01.popitv.util.RatioImageView
-                android:id="@+id/ivBackdrop"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:fitsSystemWindows="true"
-                app:layout_collapseMode="parallax"
-                app:ratio="1.78"
-                tools:ignore="ContentDescription"
-                tools:src="@tools:sample/backgrounds/scenic" />
-
-            <ImageButton
-                android:id="@+id/ibBack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/standart_top"
-                android:background="@drawable/ripple_back_icon"
-                android:padding="@dimen/standart_top"
-                android:src="@drawable/ic_baseline_arrow_white_24"
-                tools:ignore="ContentDescription" />
-
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <androidx.core.widget.NestedScrollView
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="tv"
+            type="com.yildirimomer01.popitv.model.TvShowDetail" />
+    </data>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/standart_top"
-        app:behavior_overlapTop="68dp"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+        android:fitsSystemWindows="true"
+        tools:context=".ui.detailing.DetailFragment">
 
-        <LinearLayout
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:fitsSystemWindows="true">
 
-            <RelativeLayout
+            <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
                 <com.yildirimomer01.popitv.util.RatioImageView
-                    android:id="@+id/ivPoster"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    app:ratio="0.68"
-                    tools:src="@tools:sample/avatars" />
-
-                <LinearLayout
+                    android:id="@+id/ivBackdrop"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="@dimen/half_top"
-                    android:layout_toEndOf="@+id/ivPoster"
-                    android:orientation="vertical">
+                    android:adjustViewBounds="true"
+                    android:fitsSystemWindows="true"
+                    app:layout_collapseMode="parallax"
+                    app:ratio="1.78"
+                    tools:ignore="ContentDescription"
+                    tools:src="@tools:sample/backgrounds/scenic"
+                    app:originalImageUrl="@{tv.backdropPath}"
+                    />
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/tvTitle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                        android:textColor="@android:color/white"
-                        tools:text="@tools:sample/full_names" />
+                <ImageButton
+                    android:id="@+id/ibBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/standart_top"
+                    android:background="@drawable/ripple_back_icon"
+                    android:padding="@dimen/standart_top"
+                    android:src="@drawable/ic_baseline_arrow_white_24"
+                    tools:ignore="ContentDescription" />
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/tvGenres"
-                        android:layout_width="match_parent"
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/standart_top"
+            app:behavior_overlapTop="68dp"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.yildirimomer01.popitv.util.RatioImageView
+                        android:id="@+id/ivPoster"
+                        android:layout_width="120dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/quart_top"
-                        android:layout_marginBottom="@dimen/quart_top"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
-                        android:textColor="@android:color/white"
-                        tools:text="Action | Crime" />
+                        android:adjustViewBounds="true"
+                        app:ratio="0.68"
+                        app:posterImageUrl="@{tv.posterPath}"
+                        tools:src="@tools:sample/avatars" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/half_top"
+                        android:layout_toEndOf="@+id/ivPoster"
+                        android:orientation="vertical">
+
                         <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/tVAirDate"
-                            android:layout_width="wrap_content"
+                            android:id="@+id/tvTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                            android:textColor="@android:color/white"
+                            tools:text="@tools:sample/full_names"
+                            android:text="@{tv.name}"
+                            />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/tvGenres"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/quart_top"
                             android:layout_marginBottom="@dimen/quart_top"
-                            android:drawableStart="@drawable/ic_baseline_calendar_today_24"
-                            android:drawablePadding="@dimen/quart_top"
-                            android:gravity="center_vertical"
                             android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
                             android:textColor="@android:color/white"
-                            tools:text="@tools:sample/date/ddmmyy" />
+                            tools:text="Action | Crime"
+                            android:text="@{tv.genreView}"
+                            />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/tVAirDate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/quart_top"
+                                android:layout_marginBottom="@dimen/quart_top"
+                                android:drawableStart="@drawable/ic_baseline_calendar_today_24"
+                                android:drawablePadding="@dimen/quart_top"
+                                android:gravity="center_vertical"
+                                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                                android:textColor="@android:color/white"
+                                tools:text="@tools:sample/date/ddmmyy"
+                                android:text="@{tv.firstAirDate.toString() +` / ` + tv.lastAirDate.toString()}"
+                                />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/tVSeason"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/quart_top"
+                                android:layout_marginBottom="@dimen/quart_top"
+                                android:drawableStart="@drawable/ic_calendar"
+                                android:drawablePadding="@dimen/quart_top"
+                                android:gravity="center_vertical"
+                                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                                android:textColor="@android:color/white"
+                                tools:text="@tools:sample/date/ddmmyy"
+                                android:text="@{String.valueOf(tv.numberOfSeasons)}"
+                                />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/tVEpisode"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/standart_top"
+                                android:layout_marginTop="@dimen/quart_top"
+                                android:layout_marginBottom="@dimen/quart_top"
+                                android:drawableStart="@drawable/ic_chapter"
+                                android:drawablePadding="@dimen/quart_top"
+                                android:gravity="center_vertical"
+                                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                                android:textColor="@android:color/white"
+                                tools:text="@tools:sample/date/ddmmyy"
+                                android:text="@{String.valueOf(tv.numberOfEpisodes)}"
+                                />
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <androidx.appcompat.widget.AppCompatRatingBar
+                                android:id="@+id/rbRating"
+                                style="?attr/ratingBarStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:isIndicator="true"
+                                app:ratings="@{tv.voteAverage}"
+                                />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/tvVoteCount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/standart_top"
+                                android:layout_marginTop="@dimen/quart_top"
+                                android:layout_marginBottom="@dimen/quart_top"
+                                android:drawableEnd="@drawable/ic_baseline_people_24"
+                                android:drawablePadding="@dimen/quart_top"
+                                android:gravity="center_vertical"
+                                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                                android:textColor="@android:color/white"
+                                tools:text="150"
+                                android:text="@{tv.voteCount.toString()}"
+                                />
+                        </LinearLayout>
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/tVSeason"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/quart_top"
-                            android:layout_marginBottom="@dimen/quart_top"
-                            android:drawableStart="@drawable/ic_calendar"
-                            android:drawablePadding="@dimen/quart_top"
-                            android:gravity="center_vertical"
-                            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
-                            android:textColor="@android:color/white"
-                            tools:text="@tools:sample/date/ddmmyy" />
+                </RelativeLayout>
 
-                        <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/tVEpisode"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/standart_top"
-                            android:layout_marginTop="@dimen/quart_top"
-                            android:layout_marginBottom="@dimen/quart_top"
-                            android:drawableStart="@drawable/ic_chapter"
-                            android:drawablePadding="@dimen/quart_top"
-                            android:gravity="center_vertical"
-                            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
-                            android:textColor="@android:color/white"
-                            tools:text="@tools:sample/date/ddmmyy" />
-                    </LinearLayout>
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/standart_top"
+                    android:layout_marginBottom="@dimen/standart_top"
+                    android:text="@string/overview"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:textColor="@android:color/white" />
 
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tVOverivew"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="55"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:textColor="@android:color/white"
+                    tools:text="@tools:sample/lorem/random"
+                    android:text="@{tv.overview}"
+                    />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/standart_top"
+                    android:layout_marginBottom="@dimen/standart_top"
+                    android:text="@string/creators"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:textColor="@android:color/white" />
 
-                        <androidx.appcompat.widget.AppCompatRatingBar
-                            android:id="@+id/rbRating"
-                            style="?attr/ratingBarStyleSmall"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:isIndicator="true"
-                            android:rating="3.5" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvCreator"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:itemCount="1"
+                    tools:listitem="@layout/item_network">
+                </androidx.recyclerview.widget.RecyclerView>
 
-                        <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/tvVoteCount"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/standart_top"
-                            android:layout_marginTop="@dimen/quart_top"
-                            android:layout_marginBottom="@dimen/quart_top"
-                            android:drawableEnd="@drawable/ic_baseline_people_24"
-                            android:drawablePadding="@dimen/quart_top"
-                            android:gravity="center_vertical"
-                            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
-                            android:textColor="@android:color/white"
-                            tools:text="150" />
-                    </LinearLayout>
-                </LinearLayout>
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/standart_top"
+                    android:layout_marginBottom="@dimen/standart_top"
+                    android:text="@string/networks"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:textColor="@android:color/white" />
 
-            </RelativeLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvNetwork"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:itemCount="1"
+                    tools:listitem="@layout/item_network">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/standart_top"
-                android:layout_marginBottom="@dimen/standart_top"
-                android:text="@string/overview"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-                android:textColor="@android:color/white" />
+                </androidx.recyclerview.widget.RecyclerView>
+            </LinearLayout>
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tVOverivew"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:maxLines="55"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-                android:textColor="@android:color/white"
-                tools:text="@tools:sample/lorem/random" />
+        </androidx.core.widget.NestedScrollView>
 
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/standart_top"
-                android:layout_marginBottom="@dimen/standart_top"
-                android:text="@string/creators"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-                android:textColor="@android:color/white" />
+        <include layout="@layout/layout_loading" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvCreator"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:itemCount="1"
-                tools:listitem="@layout/item_network">
-            </androidx.recyclerview.widget.RecyclerView>
-
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/standart_top"
-                android:layout_marginBottom="@dimen/standart_top"
-                android:text="@string/networks"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-                android:textColor="@android:color/white" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvNetwork"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:itemCount="1"
-                tools:listitem="@layout/item_network">
-
-            </androidx.recyclerview.widget.RecyclerView>
-        </LinearLayout>
-
-    </androidx.core.widget.NestedScrollView>
-
-    <include layout="@layout/layout_loading" />
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>
