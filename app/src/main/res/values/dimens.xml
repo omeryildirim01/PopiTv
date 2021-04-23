@@ -3,4 +3,5 @@
     <dimen name="standart_top">16dp</dimen>
     <dimen name="half_top">8dp</dimen>
     <dimen name="quart_top">4dp</dimen>
+    <dimen name="standart_top2">24dp</dimen>
 </resources>

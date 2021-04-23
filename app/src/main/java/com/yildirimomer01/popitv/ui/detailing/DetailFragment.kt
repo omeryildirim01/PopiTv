@@ -74,7 +74,7 @@ class DetailFragment : Fragment() {
                     tvGenres.visibility =  if (tvShowDetail?.genres != null && tvShowDetail.genres.isNotEmpty())  View.VISIBLE else View.GONE
                     tVEpisode.visibility =  if (tvShowDetail?.numberOfEpisodes != null)  View.VISIBLE else View.GONE
                     tVSeason.visibility =  if (tvShowDetail?.numberOfSeasons != null) View.VISIBLE else View.GONE
-                    
+
                     val networks = tvShowDetail?.networks
                     if (networks != null && networks.isNotEmpty()){
                         networkAdapter.submitList(networks)

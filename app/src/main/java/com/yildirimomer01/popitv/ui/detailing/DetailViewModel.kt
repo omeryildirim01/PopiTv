@@ -41,14 +41,6 @@ class DetailViewModel @Inject constructor(
                     .subscribe(
                         { tv ->
                             Timber.i(tv.toString())
-                            tv.genreView = ""
-                            if (tv?.genres != null && tv.genres.isNotEmpty()) {
-                                val genres = tv.genres.joinToString(
-                                    separator = " | ",
-                                    transform = { genre -> genre.name!! }
-                                )
-                                tv.genreView = genres
-                            }
                             _tvShow.value = Resource.Success(tv)
                         },
                         { error ->

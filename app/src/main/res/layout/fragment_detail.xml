@@ -66,6 +66,7 @@
                 android:orientation="vertical">
 
                 <RelativeLayout
+                    android:layout_marginTop="@dimen/half_top"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -83,14 +84,17 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="@dimen/half_top"
+                        android:layout_marginTop="@dimen/standart_top"
+                        android:padding="@dimen/half_top"
                         android:layout_toEndOf="@+id/ivPoster"
                         android:orientation="vertical">
 
                         <com.google.android.material.textview.MaterialTextView
                             android:id="@+id/tvTitle"
+                            android:layout_marginTop="@dimen/standart_top"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
                             android:textColor="@android:color/white"
                             tools:text="@tools:sample/full_names"
                             android:text="@{tv.name}"
@@ -100,22 +104,24 @@
                             android:id="@+id/tvGenres"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/quart_top"
                             android:layout_marginBottom="@dimen/quart_top"
                             android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
                             android:textColor="@android:color/white"
                             tools:text="Action | Crime"
-                            android:text="@{tv.genreView}"
+                            android:text="@{tv.genreString}"
                             />
 
                         <LinearLayout
+                            android:gravity="fill"
+                            android:layout_gravity="fill"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
                             <com.google.android.material.textview.MaterialTextView
                                 android:id="@+id/tVAirDate"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="fill"
                                 android:layout_marginTop="@dimen/quart_top"
                                 android:layout_marginBottom="@dimen/quart_top"
                                 android:drawableStart="@drawable/ic_baseline_calendar_today_24"
@@ -129,12 +135,14 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:weightSum="2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
                             <com.google.android.material.textview.MaterialTextView
                                 android:id="@+id/tVSeason"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/quart_top"
                                 android:layout_marginBottom="@dimen/quart_top"
@@ -166,6 +174,7 @@
 
 
                         <LinearLayout
+                            android:weightSum="2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center_vertical"
@@ -174,9 +183,11 @@
                             <androidx.appcompat.widget.AppCompatRatingBar
                                 android:id="@+id/rbRating"
                                 style="?attr/ratingBarStyleSmall"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
                                 android:layout_height="wrap_content"
                                 android:isIndicator="true"
+                                android:rating="1.0"
                                 app:ratings="@{tv.voteAverage}"
                                 />
 
