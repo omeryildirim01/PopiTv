@@ -200,12 +200,29 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/standart_top"
                 android:layout_marginBottom="@dimen/standart_top"
+                android:text="@string/creators"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:textColor="@android:color/white" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCreator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:itemCount="1"
+                tools:listitem="@layout/item_network">
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/standart_top"
+                android:layout_marginBottom="@dimen/standart_top"
                 android:text="@string/networks"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
                 android:textColor="@android:color/white" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvCast"
+                android:id="@+id/rvNetwork"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:itemCount="1"

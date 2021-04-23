@@ -103,7 +103,7 @@ data class Creator(
     val name: String?,
     @Json(name = "gender")
     val gender:Int?,
-    @Json(name = "profilePath")
+    @Json(name = "profile_path")
     val profilePath:String?
 
 )

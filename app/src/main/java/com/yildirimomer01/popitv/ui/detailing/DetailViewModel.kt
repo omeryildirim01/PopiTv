@@ -20,14 +20,14 @@ class DetailViewModel @Inject constructor(
 ) : ViewModel() {
     private val _tvShow = MutableLiveData<Resource<TvShowDetail>>()
     private val compositeDisposable = CompositeDisposable()
+    private val errorMessage = "Sorry, tv show not found !"
     val tvShow: LiveData<Resource<TvShowDetail>>
         get() = _tvShow
     init {
-
         if (handle.contains("tvShowId")){
-            val movieId =   handle.get<Long>("tvShowId")
+            val tvId =   handle.get<Long>("tvShowId")
             compositeDisposable.addAll(
-                tvShowRepository.getTvShowDetails(movieId!!)
+                tvShowRepository.getTvShowDetails(tvId!!)
                     .doOnSubscribe { _tvShow.value = Resource.Loading() }
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(
@@ -41,8 +41,10 @@ class DetailViewModel @Inject constructor(
                         }
                     )
             )
-        }else{
-            _tvShow.value = Resource.Error("Sorry, tv show not found !")
+        }
+        else
+        {
+            _tvShow.value = Resource.Error(errorMessage)
         }
     }
 

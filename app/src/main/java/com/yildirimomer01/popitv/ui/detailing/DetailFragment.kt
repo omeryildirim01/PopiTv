@@ -22,18 +22,25 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
 
     private val viewModel: DetailViewModel by viewModels()
     private lateinit var networkAdapter: NetworkAdapter
-
+    private lateinit var creatorAdapter: CreatorAdapter
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         ibBack.setOnClickListener {
             it.findNavController().popBackStack()
         }
         networkAdapter = NetworkAdapter()
-        rvCast.apply {
+        rvNetwork.apply {
             layoutManager = LinearLayoutManager(requireContext(),
                 LinearLayoutManager.HORIZONTAL,false)
                 adapter = networkAdapter
         }
+        creatorAdapter = CreatorAdapter()
+        rvCreator.apply {
+            layoutManager = LinearLayoutManager(requireContext(),
+                LinearLayoutManager.HORIZONTAL,false)
+            adapter = creatorAdapter
+        }
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -99,7 +106,10 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
                     if (networks != null && networks.isNotEmpty()){
                         networkAdapter.submitList(networks)
                     }
-
+                    val creators = tvShowDetail?.createdBy
+                    if (networks != null && networks.isNotEmpty()){
+                        creatorAdapter.submitList(creators)
+                    }
                 }
                 Status.ERROR ->{
                     showLoading(false)
