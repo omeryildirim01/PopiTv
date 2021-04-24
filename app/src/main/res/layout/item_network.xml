@@ -1,33 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="120dp"
-    android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:padding="@dimen/standart_top"
-    android:background="@color/colorCardBg"
-    >
-    <androidx.appcompat.widget.AppCompatImageView
-        android:layout_width="wrap_content"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="network"
+            type="com.yildirimomer01.popitv.model.Network" />
+    </data>
+    <RelativeLayout
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:id="@+id/ivNetwork"
-        tools:src="@tools:sample/avatars"
-        android:scaleType="fitCenter"
-        android:layout_centerHorizontal="true"
-        />
+        android:padding="@dimen/standart_top"
+        android:background="@color/colorCardBg"
+        >
+        <com.yildirimomer01.popitv.util.RatioImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ivNetwork"
+            tools:src="@tools:sample/avatars"
+            android:scaleType="fitCenter"
+            android:layout_centerHorizontal="true"
+            app:originalImageUrl="@{network.logoPath}"
+            />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
-        tools:text="@tools:sample/full_names"
-        android:layout_marginTop="@dimen/half_top"
-        android:layout_below="@+id/ivNetwork"
-        android:id="@+id/tvName"
-        android:layout_centerHorizontal="true"
-        android:ellipsize="end"
-        android:maxLines="2"
-        android:lines="2"
-        android:gravity="center"
-        />
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            tools:text="@tools:sample/full_names"
+            android:layout_marginTop="@dimen/half_top"
+            android:layout_below="@+id/ivNetwork"
+            android:id="@+id/tvName"
+            android:layout_centerHorizontal="true"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:lines="2"
+            android:gravity="center"
+            android:text="@{network.name}"
+            />
 
-</RelativeLayout>
+    </RelativeLayout>
+
+</layout>
