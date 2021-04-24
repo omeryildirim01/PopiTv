@@ -1,43 +1,35 @@
 package com.yildirimomer01.popitv.ui.detailing
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.yildirimomer01.popitv.R
+import com.yildirimomer01.popitv.databinding.ItemCreatorBinding
 import com.yildirimomer01.popitv.model.Creator
-import com.yildirimomer01.popitv.module.GlideApp
-import kotlinx.android.synthetic.main.item_creator.view.*
+
 
 class CreatorAdapter : ListAdapter<Creator, CreatorAdapter.ItemViewHolder>(COMPARATOR) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        return ItemViewHolder.from(parent)
+        val binding : ItemCreatorBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.context),R.layout.item_creator, parent, false)
+        return ItemViewHolder.from(binding)
     }
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = getItem(position)
         holder.bind(item)
     }
-    class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+    class ItemViewHolder(itemBinding: ItemCreatorBinding) : RecyclerView.ViewHolder(itemBinding.root){
+        var bindingItem: ItemCreatorBinding = itemBinding
         fun bind(creator: Creator) {
-            itemView.apply {
-                GlideApp.with(ivCreator)
-                    .load("https://image.tmdb.org/t/p/original${creator.profilePath}")
-                    .placeholder(R.drawable.ic_error_image)
-                    .error(R.drawable.ic_error_image)
-                    .transform(CircleCrop())
-                    .into(ivCreator)
-                tvName.text = creator.name
-            }
+            bindingItem.creator = creator
+            bindingItem.executePendingBindings();
         }
         companion object{
-            fun from(parent: ViewGroup): ItemViewHolder{
-                val layoutInflater = LayoutInflater.from(parent.context)
-                val itemView = layoutInflater.inflate(R.layout.item_creator,parent,false)
-                return ItemViewHolder(itemView)
+            fun from(binding : ItemCreatorBinding): ItemViewHolder{
+                return ItemViewHolder(binding)
             }
         }
     }

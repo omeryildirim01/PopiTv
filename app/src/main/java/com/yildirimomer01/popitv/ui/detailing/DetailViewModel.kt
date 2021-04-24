@@ -63,25 +63,33 @@ class DetailViewModel @Inject constructor(
         @JvmStatic
         @BindingAdapter("originalImageUrl")
         fun loadOriginalImage(view: RatioImageView, url: String?) {
-            if (!url.isNullOrEmpty()) {
-                GlideApp.with(view)
-                    .load("https://image.tmdb.org/t/p/original${url}")
-                    .placeholder(R.drawable.ic_image_placeholder)
-                    .error(R.drawable.ic_error_image)
-                    .into(view)
-            }
+            GlideApp.with(view)
+                .load("https://image.tmdb.org/t/p/original${url}")
+                .placeholder(R.drawable.ic_image_placeholder)
+                .error(R.drawable.ic_error_image)
+                .into(view)
+
         }
 
         @JvmStatic
         @BindingAdapter("posterImageUrl")
         fun loadPosterImage(view: RatioImageView, url: String?) {
-            if (!url.isNullOrEmpty()) {
-                GlideApp.with(view)
-                    .load("https://image.tmdb.org/t/p/w500${url}")
-                    .placeholder(R.drawable.ic_image_placeholder)
-                    .error(R.drawable.ic_error_image)
-                    .into(view)
-            }
+            GlideApp.with(view)
+                .load("https://image.tmdb.org/t/p/w500${url}")
+                .placeholder(R.drawable.ic_image_placeholder)
+                .error(R.drawable.ic_error_image)
+                .into(view)
+
+        }
+        @JvmStatic
+        @BindingAdapter("profileImageUrl")
+        fun loadProfileImage(view: RatioImageView, url: String?) {
+            GlideApp.with(view)
+                .load("https://image.tmdb.org/t/p/original${url}")
+                .placeholder(R.drawable.ic_user__1_)
+                .error(R.drawable.ic_user__1_)
+                .into(view)
+
         }
 
         @JvmStatic
@@ -89,7 +97,7 @@ class DetailViewModel @Inject constructor(
         fun setRating(ratingBar: AppCompatRatingBar, rating: Double?) {
             try {
                 if (rating != null) {
-                    ratingBar.rating = (rating/2).toFloat()
+                    ratingBar.rating = (rating / 2).toFloat()
                 }
             } catch (ex: Throwable) {
                 Timber.e(ex)
